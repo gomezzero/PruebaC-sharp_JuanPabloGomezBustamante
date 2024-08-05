@@ -11,40 +11,39 @@ namespace PruebaC_sharp_JuanPabloGomezBustamante.Models
         {
             Console.WriteLine("Ingrese el nombre del Perro");
             string name = Console.ReadLine().Trim().ToLower();
+            ShowFooter();
 
             Console.WriteLine("Ingrese la fecha de nacimiento del Perro (yyyy/dd/mm)");
             DateOnly birthDate = DateOnly.Parse(Console.ReadLine());
-            while (!DateOnly.TryParseExact(Console.ReadLine(), "yyyy/dd/MM", null, System.Globalization.DateTimeStyles.None, out birthDate))
+            DateTime birthDateConfirmation = DateTime.Parse(birthDate.ToString());
+            if (birthDateConfirmation > DateTime.Today.Date.AddYears(-1))
             {
-                Console.WriteLine("Formato de fecha incorrecto. Ingrese de nuevo (yyyy/dd/mm)");
+                Console.WriteLine("La fecha de nacimiento ingresada es incorrecta, ingrese una fecha valida: ");
+                birthDate = DateOnly.Parse(Console.ReadLine());
             }
+            ShowFooter();
+
 
             Console.WriteLine("Ingrese la raza del Perro");
             string breed = Console.ReadLine().Trim().ToLower();
+            ShowFooter();
 
             Console.WriteLine("Ingrese el color del Perro");
             string color = Console.ReadLine().Trim().ToLower();
+            ShowFooter();
 
             Console.WriteLine("Ingrese el peso del Perro en kilogramos");
             double weightInKG = Convert.ToDouble(Console.ReadLine().Trim());
+            ShowFooter();
 
-            Console.WriteLine("¿El perro está castrado? (si/no)");
-            string castrationConfirmation = Console.ReadLine().Trim().ToLower();
-            bool breedingStatus = true;
-
-            if (castrationConfirmation == "si")
+            Console.WriteLine("¿El perro está castrado? (true/false)");
+            bool breedingStatus = Convert.ToBoolean(Console.ReadLine);
+            if (breedingStatus != false && breedingStatus != true)
             {
-                breedingStatus = true;
+                Console.WriteLine("ingresa un valor valido");
+                breedingStatus = Convert.ToBoolean(Console.ReadLine());
             }
-            else if (castrationConfirmation == "no")
-            {
-                breedingStatus = false;
-            }
-            else
-            {
-                Console.WriteLine("Respuesta incorrecta. El perro estara registrado sin castrar");
-                breedingStatus = false;
-            }
+            ShowFooter();
 
             Console.WriteLine("Ingrese el tipo de temperamento del Perro (Timido, Normal, Agresivo)");
             string temperament = Console.ReadLine().Trim().ToLower();
@@ -65,15 +64,19 @@ namespace PruebaC_sharp_JuanPabloGomezBustamante.Models
                 Console.WriteLine("El temperamento ingresado es incorrecto, ingrese un temperamento valido: ");
                 temperament = Console.ReadLine().Trim().ToLower();
             }
+            ShowFooter();
 
             Console.WriteLine("Ingrese el número de microchip del Perro");
             string microchipNumber = Console.ReadLine().Trim();
+            ShowFooter();
 
             Console.WriteLine("Ingrese el volumen del ruido de la Mascota (alto, medio, bajo)");
             string barkVolume = Console.ReadLine().Trim().ToLower();
+            ShowFooter();
 
             Console.WriteLine("Ingrese el tipo de pelo del Perro (corto, largo, mediano, nulo)");
             string coatType = Console.ReadLine().Trim().ToLower();
+            ShowFooter();
 
             if (coatType == "corto")
             {
@@ -91,6 +94,7 @@ namespace PruebaC_sharp_JuanPabloGomezBustamante.Models
             {
                 coatType = "nulo";
             }
+            ShowFooter();
 
             return new Dog(name, birthDate, breed, color, weightInKG, breedingStatus, temperament, microchipNumber, barkVolume, coatType);
         }
@@ -99,38 +103,41 @@ namespace PruebaC_sharp_JuanPabloGomezBustamante.Models
         {
             Console.WriteLine("Ingrese el nombre del gato");
             string name = Console.ReadLine().Trim().ToLower();
+            ShowFooter();
 
-            Console.WriteLine("Ingrese la fecha de nacimiento del gato (yyyy/dd/mm)");
+            Console.WriteLine("Ingrese la fecha de nacimiento del Gato (yyyy/dd/mm)");
             DateOnly birthDate = DateOnly.Parse(Console.ReadLine());
+            DateTime birthDateConfirmation = DateTime.Parse(birthDate.ToString());
+            if (birthDateConfirmation > DateTime.Today.Date.AddYears(-1))
+            {
+                Console.WriteLine("La fecha de nacimiento ingresada es incorrecta, ingrese una fecha valida: ");
+                birthDate = DateOnly.Parse(Console.ReadLine());
+            }
+            ShowFooter();
 
 
             Console.WriteLine("Ingrese la raza del gato");
             string breed = Console.ReadLine().Trim().ToLower();
+            ShowFooter();
 
             Console.WriteLine("Ingrese el color del gato");
             string color = Console.ReadLine().Trim().ToLower();
+            ShowFooter();
 
             Console.WriteLine("Ingrese el peso del gato en kilogramos");
             double weightInKG = Convert.ToDouble(Console.ReadLine().Trim());
+            ShowFooter();
 
-            Console.WriteLine("¿El gato está castrado? (si/no)");
-            string castrationConfirmation = Console.ReadLine().Trim().ToLower();
+            Console.WriteLine("¿El gato está castrado? (true/false)");
+            bool breedingStatus = Convert.ToBoolean(Console.ReadLine());
+            ShowFooter();
 
-            bool breedingStatus;
-
-            if (castrationConfirmation == "si")
+            if (breedingStatus != false && breedingStatus != true)
             {
-                breedingStatus = true;
+                Console.WriteLine("ingresa un valor valido");
+                breedingStatus = Convert.ToBoolean(Console.ReadLine());
             }
-            else if (castrationConfirmation == "no")
-            {
-                breedingStatus = false;
-            }
-            else
-            {
-                Console.WriteLine("Respuesta incorrecta. El gato estara registrado sin castrar");
-                breedingStatus = false;
-            }
+            ShowFooter();
 
             Console.WriteLine("Ingrese la longitud de la pelada del gato (corto, medio, largo, mediano, nulo)");
             string furLength = Console.ReadLine().Trim().ToLower();
@@ -159,16 +166,17 @@ namespace PruebaC_sharp_JuanPabloGomezBustamante.Models
                 Console.WriteLine("ingresaste un valor erroneo porfavor ingresa uno valido");
                 furLength = Console.ReadLine().Trim().ToLower();
             }
+            ShowFooter();
 
             return new Cat(name, birthDate, breed, color, weightInKG, breedingStatus, furLength);
         }
 
-        public static Dog UpdateDog()
+        public static Dog UpdateDog2()
         {
             return CreateDog();
         }
 
-        public static Cat UpdateCat()
+        public static Cat UpdateCat2()
         {
             return CreateCat();
         }
@@ -176,21 +184,21 @@ namespace PruebaC_sharp_JuanPabloGomezBustamante.Models
         public static void ShowHeader(string title)
         {
             Console.Clear();
-            Console.WriteLine(new string('-', 45));
+            Console.WriteLine(new string('-', 44));
             Console.WriteLine(title.ToUpper());
-            Console.WriteLine(new string('-', 45));
+            Console.WriteLine(new string('-', 44));
         }
 
         public static void ShowFooter()
         {
             Console.WriteLine();
-            Console.WriteLine(new string('-', 45));
+            Console.WriteLine(new string('-', 44));
             Console.WriteLine();
         }
 
         public static void ShowSeparator()
         {
-            Console.WriteLine(new string('-', 45));
+            Console.WriteLine(new string('-', 44));
             Console.WriteLine("");
         }
 

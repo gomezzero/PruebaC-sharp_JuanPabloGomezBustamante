@@ -25,14 +25,24 @@ namespace PruebaC_sharp_JuanPabloGomezBustamante.Models
             FurLength = furLength;
         }
 
-        public void CastrateAnimal()
+        public void CastrateAnimal(string nameCatCastrate ,List<Cat> ListOfCat)
         {
+             Cat catCastrate = ListOfCat.FirstOrDefault(e => e.GetName() == nameCatCastrate);
 
+            if (catCastrate!= null || BreedingStatus == true)
+            {
+                Console.WriteLine($"El gato {nameCatCastrate} no ah pasado por castracion ya que ya esta castrado");
+            }
+            else if (catCastrate!= null || BreedingStatus == false)
+            {
+                Console.WriteLine($"El gato {nameCatCastrate} ha pasado por castracion");
+                BreedingStatus = true;
+            }            
         }
 
-        public void Hairdress(string nameHirdressCat, List<Cat> listOfCat)
+        public void HairdressCat(string nameHirdressCat, List<Cat> ListOfCat)
         {
-            Cat cat = listOfCat.FirstOrDefault(e => e.GetName() == nameHirdressCat);
+            Cat cat = ListOfCat.FirstOrDefault(e => e.GetName() == nameHirdressCat);
 
             if (cat != null || cat.FurLength == "largo")
             {
@@ -83,7 +93,7 @@ namespace PruebaC_sharp_JuanPabloGomezBustamante.Models
             return WeightInKG;
         }
 
-        protected override void ShowInformacion()
+        public override void ShowInformacion()
         {
             Console.WriteLine($"ID: {Id}");
             Console.WriteLine($"Nombre: {Name}");
@@ -91,7 +101,26 @@ namespace PruebaC_sharp_JuanPabloGomezBustamante.Models
             Console.WriteLine($"Color: {Color}");
             Console.WriteLine($"Peso: {WeightInKG} kg");
             Console.WriteLine($"Edad: {CalculateAgeInMonths()} meses");
+            Console.WriteLine($"capado:  {BreedingStatus}");
+            Console.WriteLine($"Longitud del pelo: {FurLength}");
             BasicReview();
         }
+
+        public void ShowAnimals(string typeAnimal)
+        {
+            if (typeAnimal.ToLower() == "cat")
+            {
+                foreach (var cat in VeterinaryClinic.ListOfCat)
+                {
+                    Console.WriteLine($"Id: {cat.Id}, Name: {cat.Name}, Breed: {cat.Breed}");
+
+                }
+            }
+            else
+            {
+                Console.WriteLine("Tipo de animal no válido");
+            }
+        }
+
     }
 }

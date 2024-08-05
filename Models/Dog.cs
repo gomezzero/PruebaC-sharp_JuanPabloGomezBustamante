@@ -15,7 +15,7 @@ namespace PruebaC_sharp_JuanPabloGomezBustamante.Models
 
         // metodos
         public Dog(string name, DateOnly birthDate, string breed, string color, double weightInKG, bool breedingStatus, string temperament, string microchipNumber, string barkVolume, string coatType)
-        : base(name, birthDate, breed, color, weightInKG)
+                : base(name, birthDate, breed, color, weightInKG)
         {
             Name = name;
             BirthDate = birthDate;
@@ -29,10 +29,26 @@ namespace PruebaC_sharp_JuanPabloGomezBustamante.Models
             CoatType = coatType;
         }
 
-        public void CastrateAnimal()
+        public Dog(string name, DateOnly birthDate, string breed, string color, double weightInKG)
+               : base(name, birthDate, breed, color, weightInKG)
         { }
 
-        public void Hairdress(string nameHirdress, List<Dog> listOfDog)
+        public void CastrateDog(string nameDogCastrate ,List<Dog> ListOfdog)
+        { 
+             Dog dogCastrate = ListOfdog.FirstOrDefault(e => e.GetName() == nameDogCastrate);
+
+            if (dogCastrate!= null || BreedingStatus == true)
+            {
+                Console.WriteLine($"El perro {nameDogCastrate} no ah pasado por castracion ya que ya esta castrado");
+            }
+            else if (dogCastrate!= null || BreedingStatus == false)
+            {
+                Console.WriteLine($"El perro {nameDogCastrate} ha pasado por castracion");
+                BreedingStatus = true;
+            }            
+        }
+
+        public void HairdressDog(string nameHirdress, List<Dog> listOfDog)
         {
             Dog dog = listOfDog.FirstOrDefault(e => e.GetName() == nameHirdress);
 
@@ -89,7 +105,7 @@ namespace PruebaC_sharp_JuanPabloGomezBustamante.Models
             return WeightInKG;
         }
 
-        protected override void ShowInformacion()
+        public override void ShowInformacion()
         {
             Console.WriteLine($"ID: {Id}");
             Console.WriteLine($"Nombre: {Name}");
@@ -97,7 +113,26 @@ namespace PruebaC_sharp_JuanPabloGomezBustamante.Models
             Console.WriteLine($"Color: {Color}");
             Console.WriteLine($"Peso: {WeightInKG} kg");
             Console.WriteLine($"Edad: {CalculateAgeInMonths()} meses");
+            Console.WriteLine($"temperamento: {Temperament}");
+            Console.WriteLine($"Microchip: {MicrochipNumber}");
+            Console.WriteLine($"Volumen del ruido: {BarkVolume}");
+            Console.WriteLine($"Tipo de pelo: {CoatType}");
             BasicReview();
-        } 
+        }
+
+        public void ShowAnimals(string typeAnimal)
+        {
+            if (typeAnimal.ToLower() == "dog")
+            {
+                foreach (var dog in VeterinaryClinic.ListOfDog)
+                {
+                    Console.WriteLine($"Id: {dog.Id}, Name: {dog.Name}, Breed: {dog.Breed}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Tipo de animal no válido");
+            }
+        }
     }
 }

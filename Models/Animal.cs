@@ -26,7 +26,7 @@ namespace PruebaC_sharp_JuanPabloGomezBustamante.Models
             WeightInKG = weightInKG;
         }
 
-        protected abstract void ShowInformacion();
+        public abstract void ShowInformacion();
 
         protected void BasicReview()
         { 

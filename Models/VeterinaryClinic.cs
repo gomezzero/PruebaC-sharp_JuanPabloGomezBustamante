@@ -10,8 +10,8 @@ namespace PruebaC_sharp_JuanPabloGomezBustamante.Models
     {
         public string Name { get; set; }
         public string Address { get; set; }
-        public List<Dog> ListOfDog = new List<Dog>();
-        public List<Cat> ListOfCat = new List<Cat>();
+        public static List<Dog> ListOfDog = new List<Dog>();
+        public static List<Cat> ListOfCat = new List<Cat>();
 
         // metodos
         public VeterinaryClinic()
@@ -35,11 +35,11 @@ namespace PruebaC_sharp_JuanPabloGomezBustamante.Models
 
             if (dogUppdate != null)
             {
-                string deleteDog = nameDogUpdate;
-                DeleteDog(deleteDog);
+                ListOfCat.RemoveAll(e => e.GetName() == nameDogUpdate);
 
-                var nuevosDatos = ManagerApp.UpdateCat();
-                SaveCat(nuevosDatos);
+
+                var nuevosDatos = ManagerApp.UpdateDog2();
+                SaveDog(nuevosDatos);
             }
         }
 
@@ -71,23 +71,22 @@ namespace PruebaC_sharp_JuanPabloGomezBustamante.Models
 
             if (catUppdate != null)
             {
-                string deleteCat = nameCatUpdate;
-                DeleteCat(deleteCat);
-
-                var nuevosDatos = ManagerApp.UpdateCat();
+                ListOfCat.RemoveAll(e => e.GetName() == nameCatUpdate);
+                
+                var nuevosDatos = ManagerApp.UpdateCat2();
                 SaveCat(nuevosDatos);
             }
         }
 
         public void DeleteCat(string deleteCat)
         {
-            Console.WriteLine($"seguiro que quieres eliminar al perro identificado con: {deleteCat}");
+            Console.WriteLine($"seguiro que quieres eliminar al gato identificado con: {deleteCat}");
             Console.WriteLine("si - no");
             string question = Console.ReadLine();
             if (question == "si")
             {
                 ListOfCat.RemoveAll(e => e.GetName() == deleteCat);
-                Console.WriteLine("El perro fue eliminado");
+                Console.WriteLine("El gato fue eliminado");
             }
             else
             {
@@ -100,55 +99,42 @@ namespace PruebaC_sharp_JuanPabloGomezBustamante.Models
         public void ShowAllPatiens()
         {
             Console.WriteLine("Patientes en la clinica:");
+            Console.WriteLine(" ");
+
+            Console.WriteLine("Perros:");
             foreach (var dog in ListOfDog)
             {
                 Console.WriteLine($"Id: {dog.GetId()}, Name: {dog.GetName()}, Breed: {dog.BreedingStatus}");
             }
+            Console.WriteLine(" ");
+            Console.WriteLine("Gatos:");
+
             foreach (var cat in ListOfCat)
             {
                 Console.WriteLine($"Id: {cat.GetId()}, Name: {cat.GetName()}, BreedingStatus: {cat.BreedingStatus}");
             }
+            Console.WriteLine(" ");
+
         }
 
-        public void ShowAnimals(string type)
-        {
-            if (type.ToLower() == "dog")
-            {
-                foreach (var dog in ListOfDog)
-                {
-                    Console.WriteLine($"Id: {dog.GetId}, Name: {dog.GetName}, Breed: {dog.GetBreed}");
-                }
-            }
-            else if (type.ToLower() == "cat")
-            {
-                foreach (var cat in ListOfCat)
-                {
-                    Console.WriteLine($"Id: {cat.GetId}, Name: {cat.GetName}, Breed: {cat.GetBreed}");
-                }
-            }
-            else
-            {
-                Console.WriteLine("Tipo de animal no válido");
-            }
-        }
-    
+
         public void ShowParents(string nameParenst)
         {
             Dog dog = ListOfDog.FirstOrDefault(e => e.GetName() == nameParenst);
             Cat cat = ListOfCat.FirstOrDefault(e => e.GetName() == nameParenst);
 
-            if (dog!= null)
+            if (dog != null)
             {
-                Console.WriteLine($"El perro {dog.GetName()} nacido: {dog.GetBirthDate()} ");
+                Console.WriteLine($"El perro {dog.GetName()} nacido el: {dog.GetBirthDate()} con el color: {dog.GetColor()} y el peso: {dog.GetWeightInKG()} esta en nuestr base de datos");
             }
-            else if (cat!= null)
+            else if (cat != null)
             {
-                Console.WriteLine($"El gato {cat.GetName()} es dueño de: {cat.GetBirthDate()} ");
+                Console.WriteLine($"El gato {cat.GetName()} nacido el: {cat.GetBirthDate()} con el color: {cat.GetColor()} y el peso: {cat.GetWeightInKG()} esta en nuestr base de datos");
             }
             else
             {
-                Console.WriteLine("No se encontro ningún animal con ese nombre");
-            } 
+                Console.WriteLine("No se encontro ningún animal con ese nombre en nustra base de datos");
+            }
         }
     }
 }
