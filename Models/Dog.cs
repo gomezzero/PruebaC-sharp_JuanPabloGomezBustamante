@@ -98,6 +98,6 @@ namespace PruebaC_sharp_JuanPabloGomezBustamante.Models
             Console.WriteLine($"Peso: {WeightInKG} kg");
             Console.WriteLine($"Edad: {CalculateAgeInMonths()} meses");
             BasicReview();
-        }
+        } 
     }
 }
