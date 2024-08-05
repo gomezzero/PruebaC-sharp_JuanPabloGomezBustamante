@@ -14,7 +14,7 @@ namespace PruebaC_sharp_JuanPabloGomezBustamante.Models
         public string CoatType { get; set; }
 
         // metodos
-        public Dog(string name, DateOnly birthDate, string breed, string color, double weightInKG, bool breedingStatus, string temperament, string microchipNumber, string barkVolume, string coatType) 
+        public Dog(string name, DateOnly birthDate, string breed, string color, double weightInKG, bool breedingStatus, string temperament, string microchipNumber, string barkVolume, string coatType)
         : base(name, birthDate, breed, color, weightInKG)
         {
             Name = name;
@@ -32,8 +32,31 @@ namespace PruebaC_sharp_JuanPabloGomezBustamante.Models
         public void CastrateAnimal()
         { }
 
-        public void Hairdress()
-        { }
+        public void Hairdress(string nameHirdress, List<Dog> listOfDog)
+        {
+            Dog dog = listOfDog.FirstOrDefault(e => e.GetName() == nameHirdress);
+
+            if (dog != null || dog.CoatType == "largo")
+            {
+                Console.WriteLine($"El perro {nameHirdress} ha pasado por peluqueria");
+            }
+            else if (dog != null || dog.CoatType == "mediano")
+            {
+                Console.WriteLine($"El perro {nameHirdress} ha pasado por peluqueria");
+            }
+            else if (dog != null || dog.CoatType == "corto")
+            {
+                Console.WriteLine($"El perro {nameHirdress} no puede pasar por peluqueria devido a que su pelo es corto");
+            }
+            else if (dog != null || dog.CoatType == "nulo")
+            {
+                Console.WriteLine($"El perro {nameHirdress} no puede pasar por peluqueria devido a que no tiene pelo");
+            }
+            else
+            {
+                Console.WriteLine("perro no encontrado");
+            }
+        }
 
         // Mostrar los campos protected
         public int GetId()

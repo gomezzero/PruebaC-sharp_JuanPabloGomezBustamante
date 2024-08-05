@@ -72,8 +72,25 @@ namespace PruebaC_sharp_JuanPabloGomezBustamante.Models
             Console.WriteLine("Ingrese el volumen del ruido de la Mascota (alto, medio, bajo)");
             string barkVolume = Console.ReadLine().Trim().ToLower();
 
-            Console.WriteLine("Ingrese el tipo de pelo del Perro (curto, largo, nulo)");
+            Console.WriteLine("Ingrese el tipo de pelo del Perro (corto, largo, mediano, nulo)");
             string coatType = Console.ReadLine().Trim().ToLower();
+
+            if (coatType == "corto")
+            {
+                coatType = "corto";
+            }
+            else if (coatType == "largo")
+            {
+                coatType = "largo";
+            }
+            else if (coatType == "mediano")
+            {
+                coatType = "mediano";
+            }
+            else if (coatType == "nulo")
+            {
+                coatType = "nulo";
+            }
 
             return new Dog(name, birthDate, breed, color, weightInKG, breedingStatus, temperament, microchipNumber, barkVolume, coatType);
         }
@@ -115,8 +132,33 @@ namespace PruebaC_sharp_JuanPabloGomezBustamante.Models
                 breedingStatus = false;
             }
 
-            Console.WriteLine("Ingrese la longitud de la pelada del gato (corto, medio, largo)");
+            Console.WriteLine("Ingrese la longitud de la pelada del gato (corto, medio, largo, mediano, nulo)");
             string furLength = Console.ReadLine().Trim().ToLower();
+            if (furLength == "corto")
+            {
+                furLength = "corto";
+            } 
+            else if (furLength == "medio")
+            {
+                furLength = "medio";
+            }
+            else if (furLength == "largo")
+            {
+                furLength = "largo";
+            }
+            else if (furLength == "nulo")
+            {
+                furLength = "nulo";
+            }
+            else if (furLength == "mediano")
+            {
+                furLength = "mediano";
+            }
+            else
+            {
+                Console.WriteLine("ingresaste un valor erroneo porfavor ingresa uno valido");
+                furLength = Console.ReadLine().Trim().ToLower();
+            }
 
             return new Cat(name, birthDate, breed, color, weightInKG, breedingStatus, furLength);
         }

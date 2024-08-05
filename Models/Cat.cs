@@ -30,8 +30,27 @@ namespace PruebaC_sharp_JuanPabloGomezBustamante.Models
 
         }
 
-        public void Hairdress()
-        { }
+        public void Hairdress(string nameHirdressCat, List<Cat> listOfCat)
+        {
+            Cat cat = listOfCat.FirstOrDefault(e => e.GetName() == nameHirdressCat);
+
+            if (cat != null || cat.FurLength == "largo")
+            {
+                Console.WriteLine($"El gato {nameHirdressCat} ha pasado por peluqueria");
+            }
+            else if (cat != null || cat.FurLength == "mediano")
+            {
+                Console.WriteLine($"El gato {nameHirdressCat} ha pasado por peluqueria");
+            }
+            else if (cat != null || cat.FurLength == "corto")
+            {
+                Console.WriteLine($"El gato {nameHirdressCat} no puede pasar por peluqueria devido a que su pelo es corto");
+            }
+            else if (cat != null || cat.FurLength == "nulo")
+            {
+                Console.WriteLine($"El gato {nameHirdressCat} no puede pasar por peluqueria devido a que no tiene pelo");
+            }
+        }
 
         // Mostrar los campos protected
         public int GetId()
