@@ -88,5 +88,16 @@ namespace PruebaC_sharp_JuanPabloGomezBustamante.Models
         {
             return WeightInKG;
         }
+
+        protected override void ShowInformacion()
+        {
+            Console.WriteLine($"ID: {Id}");
+            Console.WriteLine($"Nombre: {Name}");
+            Console.WriteLine($"Raza: {Breed}");
+            Console.WriteLine($"Color: {Color}");
+            Console.WriteLine($"Peso: {WeightInKG} kg");
+            Console.WriteLine($"Edad: {CalculateAgeInMonths()} meses");
+            BasicReview();
+        }
     }
 }

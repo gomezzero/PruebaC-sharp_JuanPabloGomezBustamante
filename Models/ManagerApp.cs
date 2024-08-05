@@ -96,7 +96,7 @@ namespace PruebaC_sharp_JuanPabloGomezBustamante.Models
         }
 
         public static Cat CreateCat()
-        { 
+        {
             Console.WriteLine("Ingrese el nombre del gato");
             string name = Console.ReadLine().Trim().ToLower();
 
@@ -137,7 +137,7 @@ namespace PruebaC_sharp_JuanPabloGomezBustamante.Models
             if (furLength == "corto")
             {
                 furLength = "corto";
-            } 
+            }
             else if (furLength == "medio")
             {
                 furLength = "medio";
@@ -163,24 +163,42 @@ namespace PruebaC_sharp_JuanPabloGomezBustamante.Models
             return new Cat(name, birthDate, breed, color, weightInKG, breedingStatus, furLength);
         }
 
-        public static  Dog UpdateDog()
+        public static Dog UpdateDog()
         {
             return CreateDog();
         }
-        
+
         public static Cat UpdateCat()
         {
             return CreateCat();
         }
-       
-        public static void ShowHeader()
-        { }
+
+        public static void ShowHeader(string title)
+        {
+            Console.Clear();
+            Console.WriteLine(new string('-', 45));
+            Console.WriteLine(title.ToUpper());
+            Console.WriteLine(new string('-', 45));
+        }
 
         public static void ShowFooter()
-        { }
+        {
+            Console.WriteLine();
+            Console.WriteLine(new string('-', 45));
+            Console.WriteLine();
+        }
 
         public static void ShowSeparator()
-        { }
+        {
+            Console.WriteLine(new string('-', 45));
+            Console.WriteLine("");
+        }
+
+        public static void BackToMenu()
+        {
+            Console.WriteLine("Pulse cualquier boton para volver al menu");
+            Console.ReadKey();
+        }
 
     }
 }
