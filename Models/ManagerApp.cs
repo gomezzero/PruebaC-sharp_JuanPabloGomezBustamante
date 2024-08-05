@@ -12,11 +12,11 @@ namespace PruebaC_sharp_JuanPabloGomezBustamante.Models
             Console.WriteLine("Ingrese el nombre del Perro");
             string name = Console.ReadLine().Trim().ToLower();
 
-            Console.WriteLine("Ingrese la fecha de nacimiento del Perro (dd/mm/yyyy)");
+            Console.WriteLine("Ingrese la fecha de nacimiento del Perro (yyyy/dd/mm)");
             DateOnly birthDate = DateOnly.Parse(Console.ReadLine());
-            while (!DateOnly.TryParseExact(Console.ReadLine(), "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out birthDate))
+            while (!DateOnly.TryParseExact(Console.ReadLine(), "yyyy/dd/MM", null, System.Globalization.DateTimeStyles.None, out birthDate))
             {
-                Console.WriteLine("Formato de fecha incorrecto. Ingrese de nuevo (dd/mm/yyyy)");
+                Console.WriteLine("Formato de fecha incorrecto. Ingrese de nuevo (yyyy/dd/mm)");
             }
 
             Console.WriteLine("Ingrese la raza del Perro");
@@ -30,20 +30,20 @@ namespace PruebaC_sharp_JuanPabloGomezBustamante.Models
 
             Console.WriteLine("¿El perro está castrado? (si/no)");
             string castrationConfirmation = Console.ReadLine().Trim().ToLower();
-            bool breedStatus = true;
+            bool breedingStatus = true;
 
             if (castrationConfirmation == "si")
             {
-                breedStatus = true;
+                breedingStatus = true;
             }
             else if (castrationConfirmation == "no")
             {
-                breedStatus = false;
+                breedingStatus = false;
             }
             else
             {
                 Console.WriteLine("Respuesta incorrecta. El perro estara registrado sin castrar");
-                breedStatus = false;
+                breedingStatus = false;
             }
 
             Console.WriteLine("Ingrese el tipo de temperamento del Perro (Timido, Normal, Agresivo)");
@@ -75,7 +75,7 @@ namespace PruebaC_sharp_JuanPabloGomezBustamante.Models
             Console.WriteLine("Ingrese el tipo de pelo del Perro (curto, largo, nulo)");
             string coatType = Console.ReadLine().Trim().ToLower();
 
-            return new Dog(name, birthDate, breed, color, weightInKG, breedStatus, temperament, microchipNumber, barkVolume, coatType);
+            return new Dog(name, birthDate, breed, color, weightInKG, breedingStatus, temperament, microchipNumber, barkVolume, coatType);
         }
 
         public static Cat CreateCat()
@@ -83,12 +83,9 @@ namespace PruebaC_sharp_JuanPabloGomezBustamante.Models
             Console.WriteLine("Ingrese el nombre del gato");
             string name = Console.ReadLine().Trim().ToLower();
 
-            Console.WriteLine("Ingrese la fecha de nacimiento del gato (dd/mm/yyyy)");
+            Console.WriteLine("Ingrese la fecha de nacimiento del gato (yyyy/dd/mm)");
             DateOnly birthDate = DateOnly.Parse(Console.ReadLine());
-            while (!DateOnly.TryParseExact(Console.ReadLine(), "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out birthDate))
-            {
-                Console.WriteLine("Formato de fecha incorrecto. Ingrese de nuevo (dd/mm/yyyy)");
-            }
+
 
             Console.WriteLine("Ingrese la raza del gato");
             string breed = Console.ReadLine().Trim().ToLower();
@@ -101,32 +98,34 @@ namespace PruebaC_sharp_JuanPabloGomezBustamante.Models
 
             Console.WriteLine("¿El gato está castrado? (si/no)");
             string castrationConfirmation = Console.ReadLine().Trim().ToLower();
-            bool breedStatus = true;
+
+            bool breedingStatus;
 
             if (castrationConfirmation == "si")
             {
-                breedStatus = true;
+                breedingStatus = true;
             }
             else if (castrationConfirmation == "no")
             {
-                breedStatus = false;
+                breedingStatus = false;
             }
             else
             {
                 Console.WriteLine("Respuesta incorrecta. El gato estara registrado sin castrar");
-                breedStatus = false;
+                breedingStatus = false;
             }
 
             Console.WriteLine("Ingrese la longitud de la pelada del gato (corto, medio, largo)");
             string furLength = Console.ReadLine().Trim().ToLower();
 
-            return new Cat(name, birthDate, breed, color, weightInKG, breedStatus, furLength);
+            return new Cat(name, birthDate, breed, color, weightInKG, breedingStatus, furLength);
         }
 
         public static  Dog UpdateDog()
         {
-            return CreateDog
+            return CreateDog();
         }
+        
         public static Cat UpdateCat()
         {
             return CreateCat();

@@ -26,7 +26,9 @@ namespace PruebaC_sharp_JuanPabloGomezBustamante.Models
         }
 
         public void CastrateAnimal()
-        { }
+        {
+
+        }
 
         public void Hairdress()
         { }

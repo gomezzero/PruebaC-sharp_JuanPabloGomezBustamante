@@ -14,7 +14,6 @@ namespace PruebaC_sharp_JuanPabloGomezBustamante.Models
         public string CoatType { get; set; }
 
         // metodos
-
         public Dog(string name, DateOnly birthDate, string breed, string color, double weightInKG, bool breedingStatus, string temperament, string microchipNumber, string barkVolume, string coatType) 
         : base(name, birthDate, breed, color, weightInKG)
         {
