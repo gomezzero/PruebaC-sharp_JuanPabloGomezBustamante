@@ -123,6 +123,15 @@ namespace PruebaC_sharp_JuanPabloGomezBustamante.Models
             return new Cat(name, birthDate, breed, color, weightInKG, breedStatus, furLength);
         }
 
+        public static  Dog UpdateDog()
+        {
+            return CreateDog
+        }
+        public static Cat UpdateCat()
+        {
+            return CreateCat();
+        }
+       
         public static void ShowHeader()
         { }
 

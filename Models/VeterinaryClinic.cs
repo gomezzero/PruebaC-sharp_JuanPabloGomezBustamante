@@ -28,12 +28,25 @@ namespace PruebaC_sharp_JuanPabloGomezBustamante.Models
             ListOfDog.Add(newDog);
         }
 
-        public void UpdateDog(Dog dog)
-        { }
+        public void UpdateDog(Dog newDog)
+        { 
 
-        public void DeleteDog(Dog dog)
+        }
+
+        public void DeleteDog(int id)
         {
-            ListOfDog.Remove(dog);
+            Console.WriteLine($"seguiro que quieres eliminar al perro identificado con: {id}");
+            Console.WriteLine("si - no");
+            string question = Console.ReadLine();
+            if (question == "si")
+            {
+                ListOfDog.RemoveAll(e => e.GetName() == id);
+                Console.WriteLine("El perro fue eliminado");
+            }
+            else
+            {
+                Console.WriteLine("En tendido");    
+            }
         }
 
         // Metodos gatos
